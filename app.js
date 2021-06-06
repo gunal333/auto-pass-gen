@@ -15,6 +15,6 @@ app.use((req,res,next)=>{
     res.status(404).sendFile(path.join(dirname,'views','404.html'));
 });
 app.listen(port,()=>{
-  console.log('App running on port ${port}');
+  console.log('App running on port '+port);
 });
 
