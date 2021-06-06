@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automatic Password generator</title>
+    <link rel="stylesheet" href="/css/main_form.css">
+    <script>
+        function validate(form)
+        {
+          var alpha = form.alpha.value;
+          var splChar = form.splChar.value;
+          var passLen = form.passLen.value;
+          var digits = form.digits.value;
+          var passCount =form.passCount.value;
+          var letters = /^[A-Za-z]+$/;
+          if(!letters.test(alpha))
+          {
+            alert('Enter only alphabets in Alphabets needed section! : '+alpha);
+            return false;
+          }
+          if(digits<1 || digits.length > 10)
+          {
+              alert('Enter a digit only once  : '+digits);
+              return false;
+          }
+          var alphanum = /^[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+$/;
+          if(!alphanum.test(splChar))
+          {
+              alert('Enter only special characters in Special Characters needed section! : '+splChar);
+              return false;
+          }
+          
+          if(passlen<1 && (passLen<8 || passLen>15))
+            {
+                alert('Enter value from 8 to 15 in Length of the password section! : '+passLen);
+                return false;
+            }
+        if(passCount<1)
+          {
+              alert('Enter appropriate password count in Password count section! :'+passCount);
+              return false;
+          }
+          return true;
+        }
+    </script>
+</head>
+<body>
+    <form class="form" action="/" method="POST" onsubmit="return validate(this)" >
+        <h2>Password Details</h2>
+        <p type="Alphabets Needed:"><input required type="text" name="alpha" placeholder="Alphabets required in the password.."></input></p>
+        <p type="Digits Needed:"><input required type="number" name="digits" placeholder="Digits required in the password.." maxlength="10"></input></p>
+        <p type="Special Characters Needed:"><input required type="text" name="splChar" placeholder="Special Characters required in the password.."></input></p>
+        <p type="Length of the password:"><input required type="number" name="passLen" placeholder="Length between 8-15"></p>
+        <p type="Password count:"><input required type="number" name="passCount" placeholder="Number of passwords to be generated.."></p>
+        <button>Generate Passwords</button>
+      </form>
+</body>
+</html>
